@@ -4,8 +4,7 @@ var apiKey = 'AIzaSyDxFCZD_khIcgWglksSDqNxK4fGbmtAHXc';
 // とりあえず、怖いので、カレンダーを読むだけの設定
 // https://www.googleapis.com/auth/plus.meは不要かも。。
 
-var scopes = ['https://www.googleapis.com/auth/plus.me',
-                   'https://www.googleapis.com/auth/calendar.readonly'];
+var scopes = ['https://www.googleapis.com/auth/calendar.readonly'];
 
 function handleClientLoad() {
     // 予めAPI Consoleで設定したAPIキーを設定
@@ -19,6 +18,7 @@ function handleClientLoad() {
 function checkAuth() {
     // immediateをtrueで指定することで、未認証の場合、ただちにエラーが返り、
     // handleAuthResultが呼び出される。
+    console.log("successBB");
     gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
 }
 
