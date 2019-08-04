@@ -67,7 +67,7 @@ function insertEvent(){
         };
        
         var request = gapi.client.calendar.events.insert({
-          'calendarId': primary,// デフォルトカレンダー：'primary'
+          'calendarId': 'primary',// デフォルトカレンダー：'primary'
           'resource': resource
         });
     });
