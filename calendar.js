@@ -59,7 +59,6 @@ function insertEvent(){
     console.log("success click");
     gapi.client.load('calendar', 'v3', function(){
         var resource = {
-            'id': "fappasport@gmail.com",
             'summary': 'がんの検査', // 予定のタイトル
             'start': { // 開始日・時刻
             'dateTime': '2019-08-09T10:00:00.000+09:00'
