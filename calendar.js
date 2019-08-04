@@ -10,6 +10,7 @@ var scopes = ['https://www.googleapis.com/auth/plus.me',
 function handleClientLoad() {
     // 予めAPI Consoleで設定したAPIキーを設定
     gapi.client.setApiKey(apiKey);
+    console.log("successAA");
 
     // すでに認証済みかの確認をする。
     window.setTimeout(checkAuth,1);
@@ -18,7 +19,9 @@ function handleClientLoad() {
 function checkAuth() {
     // immediateをtrueで指定することで、未認証の場合、ただちにエラーが返り、
     // handleAuthResultが呼び出される。
-    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult).then(function(){
+        console.log("successBB");
+    });
 }
 
 function handleAuthResult(authResult) {
