@@ -53,6 +53,7 @@ function makeApiCall() {
 }
 
 function insertEvent(){
+    console.log("success click");
     gapi.client.load('calendar', 'v3', function(){
         var resource = {
           'summary': 'がんの検査', // 予定のタイトル
@@ -71,6 +72,7 @@ function insertEvent(){
           'resource': resource
         });
     });
+    console.log("success insertEvent");
 }
 
 // var event = CalendarApp.getDefaultCalendar().createAllDayEvent('Woodstock Festival',
