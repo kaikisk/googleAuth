@@ -19,9 +19,7 @@ function handleClientLoad() {
 function checkAuth() {
     // immediateをtrueで指定することで、未認証の場合、ただちにエラーが返り、
     // handleAuthResultが呼び出される。
-    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult).then(function(){
-        console.log("successBB");
-    });
+    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
 }
 
 function handleAuthResult(authResult) {
