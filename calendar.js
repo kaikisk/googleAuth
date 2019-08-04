@@ -8,34 +8,38 @@ var scopes = ['https://www.googleapis.com/auth/plus.me',
                    'https://www.googleapis.com/auth/calendar.readonly'];
 
 function handleClientLoad() {
-        // 予めAPI Consoleで設定したAPIキーを設定
-        gapi.client.setApiKey(apiKey);
+    // 予めAPI Consoleで設定したAPIキーを設定
+    gapi.client.setApiKey(apiKey);
 
-        // すでに認証済みかの確認をする。
-        window.setTimeout(checkAuth,1);
+    // すでに認証済みかの確認をする。
+    window.setTimeout(checkAuth,1);
 }
 
 function checkAuth() {
-        // immediateをtrueで指定することで、未認証の場合、ただちにエラーが返り、
-        // handleAuthResultが呼び出される。
-        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+    // immediateをtrueで指定することで、未認証の場合、ただちにエラーが返り、
+    // handleAuthResultが呼び出される。
+    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
 }
 
 function handleAuthResult(authResult) {
-        var authorizeButton = document.getElementById('authorize-button');
-        if (authResult && !authResult.error) {
-          authorizeButton.style.visibility = 'hidden';
-          makeApiCall();
-        } else {
-          authorizeButton.style.visibility = '';
-          authorizeButton.onclick = handleAuthClick;
-        }
+    console.log("success1");
+    var authorizeButton = document.getElementById('authorize-button');
+    console.log("success2");
+    if (authResult && !authResult.error) {
+        console.log("success3a");
+        authorizeButton.style.visibility = 'hidden';
+        makeApiCall();
+    } else {
+        console.log("success3b");
+        authorizeButton.style.visibility = '';
+        authorizeButton.onclick = handleAuthClick;
+    }
 }
 
 function handleAuthClick(event) {
-        // ここで、ポップアップ画面を表示して、OAuth認証を行う。
-        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
-        return false;
+    // ここで、ポップアップ画面を表示して、OAuth認証を行う。
+    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+    return false;
 }
 
 function makeApiCall() {
