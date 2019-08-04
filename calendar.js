@@ -1,3 +1,5 @@
+import { getMaxListeners } from "cluster";
+
 var clientId = '869215196237-v05klnhomptp0dqe02gbv0rcc5eejc3k.apps.googleusercontent.com';
 var apiKey = 'AIzaSyDxFCZD_khIcgWglksSDqNxK4fGbmtAHXc';
 
@@ -57,15 +59,16 @@ function insertEvent(){
     console.log("success click");
     gapi.client.load('calendar', 'v3', function(){
         var resource = {
-          'summary': 'がんの検査', // 予定のタイトル
-          'start': { // 開始日・時刻
+            'id': "fappasport@gmail.com",
+            'summary': 'がんの検査', // 予定のタイトル
+            'start': { // 開始日・時刻
             'dateTime': '2019-08-09T10:00:00.000+09:00'
-           },
-          'end': { // 終了日・時刻
+            },
+            'end': { // 終了日・時刻
             'dateTime': '2019-08-10T10:00:00.000+09:00'
-           },
-          'location': 'Somewhere', // 場所
-          'description': 'contents of this event' // 説明   
+            },
+            'location': 'Somewhere', // 場所
+            'description': 'contents of this event' // 説明   
         };
        
         var request = gapi.client.calendar.events.insert({
