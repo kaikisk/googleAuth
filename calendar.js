@@ -30,6 +30,7 @@ function handleAuthResult(authResult) {
         console.log("success3a");
         authorizeButton.style.visibility = 'hidden';
         makeApiCall();
+        insertEvent();
     } else {
         console.log("success3b");
         authorizeButton.style.visibility = '';
