@@ -120,6 +120,7 @@ function makeApiCall() {
             
         request.execute(function(resp) {
         for (var i = 0; i < resp.items.length; i++) {
+            console.log(resp.item);
             var li = document.createElement('li');
             li.appendChild(document.createTextNode(resp.items[i].summary));
             document.getElementById('events').appendChild(li);
