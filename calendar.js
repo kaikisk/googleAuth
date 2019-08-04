@@ -119,8 +119,8 @@ function makeApiCall() {
         });
             
         request.execute(function(resp) {
+            console.dir(resp);
         for (var i = 0; i < resp.items.length; i++) {
-            console.log(i+"番目: "+resp);
             var li = document.createElement('li');
             li.appendChild(document.createTextNode(resp.items[i].summary));
             document.getElementById('events').appendChild(li);
