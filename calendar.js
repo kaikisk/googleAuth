@@ -71,8 +71,11 @@ function insertEvent(){
           'calendarId': 'primary',// デフォルトカレンダー：'primary'
           'resource': resource
         });
+
+        request.execute(function(){
+            console.log("success insertEvent");
+        });
     });
-    console.log("success insertEvent");
 }
 
 // var event = CalendarApp.getDefaultCalendar().createAllDayEvent('Woodstock Festival',
