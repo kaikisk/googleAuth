@@ -52,6 +52,31 @@ function makeApiCall() {
     });
 }
 
+function insertEvent(){
+    gapi.client.load('calendar', 'v3', function(){
+        var resource = {
+          'summary': 'がんの検査', // 予定のタイトル
+          'start': { // 開始日・時刻
+            'dateTime': '2019-08-09T10:00:00.000+09:00'
+           },
+          'end': { // 終了日・時刻
+            'dateTime': '2019-08-10T10:00:00.000+09:00'
+           },
+          'location': 'Somewhere', // 場所
+          'description': 'contents of this event' // 説明   
+        };
+       
+        var request = gapi.client.calendar.events.insert({
+          'calendarId': primary,// デフォルトカレンダー：'primary'
+          'resource': resource
+        });
+    }
+}
+
+// var event = CalendarApp.getDefaultCalendar().createAllDayEvent('Woodstock Festival',
+//     new Date('August 15, 1969'),
+//     new Date('August 18, 1969'));
+// Logger.log('Event ID: ' + event.getId());
 // function handleClientLoad() {
 //     gapi.client.setApiKey(apiKey);
 //     window.setTimeout(checkAuth,1);
