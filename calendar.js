@@ -64,10 +64,12 @@ function insertEvent(){
             'end': { // 終了日・時刻
             'dateTime': '2019-08-10T10:00:00.000+09:00'
             },
+            'attendees': [
+                {'email': 'fappassport@gmail.com'}
+            ],
             'location': 'Somewhere', // 場所
             'description': 'contents of this event' // 説明   
         };
-       
         var request = gapi.client.calendar.events.insert({
           'calendarId': 'primary',// デフォルトカレンダー：'primary'
           'resource': resource
