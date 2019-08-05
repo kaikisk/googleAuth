@@ -122,7 +122,7 @@ function makeApiCall() {
             console.dir(resp);
         for (var i = 0; i < resp.items.length; i++) {
             var li = document.createElement('li');
-            li.appendChild(document.createTextNode(resp.item[i].start.dateTime + " : " + resp.items[i].summary));
+            li.appendChild(document.createTextNode(resp.items[i].start.dateTime + " : " + resp.items[i].summary));
             document.getElementById('events').appendChild(li);
         }
         });
