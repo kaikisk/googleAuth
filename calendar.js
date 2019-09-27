@@ -158,3 +158,15 @@ function makeCallendar(){
         });
     });
 }
+
+function insertEvent2(){
+    var date = $("#txtDate").val();
+    var detail = $("#description").val();
+ 
+    $('#calendar').fullCalendar({events: [
+        {
+            title: detail,
+            start: date
+        }
+    ]});
+}
