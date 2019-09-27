@@ -4,11 +4,30 @@
     <script src="https://apis.google.com/js/client.js"></script>
     <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
     <script type="text/javascript" src="calendar.js"></script>
+    <link href='fullcalendar.min.css' rel='stylesheet' />
+    <link href='fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    
+    <script src='moment.min.js'></script>
+    <script src='jquery.min.js'></script>
+    <script src='fullcalendar.min.js'></script>
+    
+    <script>
+      $(document).ready(function() {
+        $('#calendar').fullCalendar(getEvent());
+      });
+    </script>
+    <style>
+      #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    </style>
 </head>
 
 <body>
     <button id="authorize-button" class="btn btn-primary btn-block" style="visibility: visible" onclick="handleAuthClick()">認証ボタン</button>
     <button id="insertEvent-button" class="btn btn-primary btn-block" style="visibility: visible" onclick="insertEvent()">イベント登録</button>
+    <div id='calendar'>カレンダー</div>
      <div id='content'>
         <h1>Events</h1>
         <ul id='events'></ul>

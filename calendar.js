@@ -130,3 +130,16 @@ function makeApiCall() {
         });
     });
 }
+
+function getEvent(){
+    gapi.client.load('calendar', 'v3', function() {
+        var request = gapi.client.calendar.events.list({
+        'calendarId': 'primary'
+        });
+            
+        request.execute(function(resp) {
+            console.dir(resp);
+            return resp;
+        });
+    });
+}
