@@ -162,7 +162,7 @@ function insertEvent2(){
     var date = $("#txtDate").val();
     var detail = $("#description").val();
  
-    $('#calendar').fullCalendar.addEvent({events: [
+    $('#calendar').fullCalendar({events: [
         {
             title: detail,
             start: date
