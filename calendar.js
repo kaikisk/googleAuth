@@ -143,10 +143,17 @@ function makeCallendar(){
             
         request.execute(function(resp) {
             console.dir(resp);
-            $('#calendar').fullCalendar({
-                default: '2019-08-10',
-                events: resp.items[0]
-            });
+            for (var i = 0; i < resp.items.length; i++) {
+                $('#calendar').fullCalendar({
+                    default: '2019-08-10',
+                    events: [
+                        {
+                            title: resp.items[i].summary,
+                            start: resp.items[i].start.dateTime
+                        }
+                    ]
+                });
+            }
         });
     });
 }
