@@ -143,3 +143,7 @@ function getEvent(){
         });
     });
 }
+
+function makeCallendar(){
+    $('#calendar').fullCalendar(getEvent());
+}
