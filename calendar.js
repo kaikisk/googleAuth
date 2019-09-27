@@ -132,6 +132,10 @@ function makeApiCall() {
 }
 
 function getEvent(){
+    
+}
+
+function makeCallendar(){
     gapi.client.load('calendar', 'v3', function() {
         var request = gapi.client.calendar.events.list({
         'calendarId': 'primary'
@@ -139,24 +143,10 @@ function getEvent(){
             
         request.execute(function(resp) {
             console.dir(resp);
-            return resp;
+            $('#calendar').fullCalendar({
+                default: '2019-08-10',
+                events: resp.items[0]
+            });
         });
-    });
-}
-
-function makeCallendar(){
-    $('#calendar').fullCalendar({
-        lang:"ja",
-        eventSources : [
-            {
-              // THIS KEY WON'T WORK IN PRODUCTION!!!
-              // To make your own Google API key, follow the directions here:
-              // http://fullcalendar.io/docs/google_calendar/
-              googleCalendarApiKey: apiKey,
-    
-              // JP Holidays
-              googleCalendarId: 'primary'
-            }
-          ]
     });
 }
