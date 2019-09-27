@@ -144,6 +144,7 @@ function makeCallendar(){
         request.execute(function(resp) {
             console.dir(resp);
             for (var i = 0; i < resp.items.length; i++) {
+                console.log("getEvent")
                 $('#calendar').fullCalendar({
                     default: '2019-08-10',
                     events: [
