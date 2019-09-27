@@ -145,5 +145,18 @@ function getEvent(){
 }
 
 function makeCallendar(){
-    $('#calendar').fullCalendar(getEvent());
+    $('#calendar').fullCalendar({
+        lang:"ja",
+        eventSources : [
+            {
+              // THIS KEY WON'T WORK IN PRODUCTION!!!
+              // To make your own Google API key, follow the directions here:
+              // http://fullcalendar.io/docs/google_calendar/
+              googleCalendarApiKey: apiKey,
+    
+              // JP Holidays
+              googleCalendarId: 'primary'
+            }
+          ]
+    });
 }
