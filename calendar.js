@@ -1,5 +1,6 @@
 var clientId = '869215196237-v05klnhomptp0dqe02gbv0rcc5eejc3k.apps.googleusercontent.com';
 var apiKey = 'AIzaSyDxFCZD_khIcgWglksSDqNxK4fGbmtAHXc';
+var events;
 
 // とりあえず、怖いので、カレンダーを読むだけの設定
 // https://www.googleapis.com/auth/plus.meは不要かも。。
@@ -144,16 +145,14 @@ function makeCallendar(){
         request.execute(function(resp) {
             console.dir(resp);
             for (var i = 0; i < resp.items.length; i++) {
+                events = {
+                    title: resp.items[i].summary,
+                    start: resp.items[i].start.dateTime
+                }
                 console.log("getEvent")
-                $('#calendar').fullCalendar({
-                    default: '2019-08-10',
-                    events: [
-                        {
-                            title: resp.items[i].summary,
-                            start: resp.items[i].start.dateTime
-                        }
-                    ]
-                });
+                $('#calendar').fullCalendar.addEvent(
+                    events
+                )
             }
         });
     });
@@ -163,7 +162,7 @@ function insertEvent2(){
     var date = $("#txtDate").val();
     var detail = $("#description").val();
  
-    $('#calendar').fullCalendar({events: [
+    $('#calendar').fullCalendar.addEvent({events: [
         {
             title: detail,
             start: date
