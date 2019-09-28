@@ -155,16 +155,16 @@ function makeCallendar(){
             
         request.execute(function(resp) {
             console.dir(resp);
-            for (var i = 0; i < resp.items.length; i++) {
-                events = {
-                    title: resp.items[i].summary,
-                    start: resp.items[i].start.dateTime
-                }
-                console.log("getEvent")
-                $('#calendar').fullCalendar.addEvent(
-                    events
-                )
-            }
+            $('calendar').fullCalendar({
+                // API キーを設定する
+                googleCalendarApiKey: apiKey,
+            
+                 eventSources: [
+                {
+                    googleCalendarId: 'fappassport@gmail.com',
+                    
+                }]
+            });
         });
     });
 }
