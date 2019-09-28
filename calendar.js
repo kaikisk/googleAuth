@@ -132,8 +132,19 @@ function makeApiCall() {
     });
 }
 
-function getEvent(){
-    
+function getCalendarList(){
+    gapi.client.load('calendar', 'v3', function(){
+        // リクエストメソッド設定(パラメータなし)
+        var request = gapi.client.calendar.calendarList.list();
+        // リクエスト実行
+        request.execute(function(resp){
+          console.debug(resp);
+          for (var i in resp.items){
+            // カレンダーIDとカレンダー名を表示
+            console.log('id:' + resp.items[i].id + ' summary:' + resp.items[i].summary);
+          }
+        });
+    });
 }
 
 function makeCallendar(){
@@ -167,5 +178,6 @@ function insertEvent2(){
             title: detail,
             start: date
         }
+
     ]});
 }
